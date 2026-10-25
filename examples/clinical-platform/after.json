@@ -1,0 +1,204 @@
+{
+  "schema_version": "1",
+  "system": "Clinical services platform",
+  "revision": "release-13",
+  "synthetic": true,
+  "flows": [
+    {
+      "id": "identity",
+      "source": "identity-source",
+      "destination": "identity-store",
+      "data_categories": [
+        "account",
+        "contact"
+      ],
+      "purposes": [
+        "service"
+      ],
+      "recipient": "internal",
+      "countries": [
+        "SG"
+      ],
+      "retention_days": 30,
+      "encrypted_in_transit": true,
+      "lawful_basis": "Supplied assessment requiring responsible review",
+      "owner": "Service owner"
+    },
+    {
+      "id": "billing",
+      "source": "billing-source",
+      "destination": "billing-store",
+      "data_categories": [
+        "financial"
+      ],
+      "purposes": [
+        "service"
+      ],
+      "recipient": "internal",
+      "countries": [
+        "SG"
+      ],
+      "retention_days": 60,
+      "encrypted_in_transit": true,
+      "lawful_basis": "Supplied assessment requiring responsible review",
+      "owner": "Service owner"
+    },
+    {
+      "id": "care-notes",
+      "source": "care-notes-source",
+      "destination": "vendor-lake",
+      "data_categories": [
+        "health",
+        "contact",
+        "biometric"
+      ],
+      "purposes": [
+        "service",
+        "model-training"
+      ],
+      "recipient": "external-provider",
+      "countries": [
+        "SG",
+        "US"
+      ],
+      "retention_days": 730,
+      "encrypted_in_transit": null,
+      "lawful_basis": "Supplied assessment requiring responsible review",
+      "owner": "Service owner"
+    },
+    {
+      "id": "support-export",
+      "source": "support-export-source",
+      "destination": "support-export-store",
+      "data_categories": [
+        "contact"
+      ],
+      "purposes": [
+        "service"
+      ],
+      "recipient": "internal",
+      "countries": [
+        "SG"
+      ],
+      "retention_days": null,
+      "encrypted_in_transit": true,
+      "lawful_basis": null,
+      "owner": "Service owner"
+    },
+    {
+      "id": "legacy-metrics",
+      "source": "legacy-metrics-source",
+      "destination": "legacy-metrics-store",
+      "data_categories": [
+        "usage"
+      ],
+      "purposes": [
+        "service"
+      ],
+      "recipient": "internal",
+      "countries": [
+        "US"
+      ],
+      "retention_days": 900,
+      "encrypted_in_transit": false,
+      "lawful_basis": "Supplied assessment requiring responsible review",
+      "owner": "Service owner"
+    },
+    {
+      "id": "mail-notices",
+      "source": "mail-notices-source",
+      "destination": "mail-notices-store",
+      "data_categories": [
+        "contact"
+      ],
+      "purposes": [
+        "service"
+      ],
+      "recipient": "internal",
+      "countries": [
+        "SG"
+      ],
+      "retention_days": 30,
+      "encrypted_in_transit": true,
+      "lawful_basis": "Supplied assessment requiring responsible review",
+      "owner": "Service owner"
+    },
+    {
+      "id": "vendor-metrics",
+      "source": "vendor-metrics-source",
+      "destination": "vendor-metrics-store",
+      "data_categories": [
+        "usage"
+      ],
+      "purposes": [
+        "service"
+      ],
+      "recipient": "internal",
+      "countries": [
+        "MY",
+        "SG"
+      ],
+      "retention_days": 90,
+      "encrypted_in_transit": true,
+      "lawful_basis": "Supplied assessment requiring responsible review",
+      "owner": "Service owner"
+    },
+    {
+      "id": "fraud-model",
+      "source": "fraud-model-source",
+      "destination": "fraud-model-store",
+      "data_categories": [
+        "Health "
+      ],
+      "purposes": [
+        "service"
+      ],
+      "recipient": "internal",
+      "countries": [
+        "MY"
+      ],
+      "retention_days": 180,
+      "encrypted_in_transit": true,
+      "lawful_basis": "Supplied assessment requiring responsible review",
+      "owner": "Service owner"
+    },
+    {
+      "id": "audit-archive",
+      "source": "audit-archive-source",
+      "destination": "audit-archive-store",
+      "data_categories": [
+        "usage"
+      ],
+      "purposes": [
+        "service"
+      ],
+      "recipient": "internal",
+      "countries": [
+        "SG"
+      ],
+      "retention_days": null,
+      "encrypted_in_transit": true,
+      "lawful_basis": "Supplied assessment requiring responsible review",
+      "owner": "Service owner"
+    },
+    {
+      "id": "research-subprocessor",
+      "source": "vendor-lake",
+      "destination": "research-subprocessor-store",
+      "data_categories": [
+        "health"
+      ],
+      "purposes": [
+        "service"
+      ],
+      "recipient": "internal",
+      "countries": [
+        "GB"
+      ],
+      "retention_days": 400,
+      "encrypted_in_transit": true,
+      "lawful_basis": "Supplied assessment requiring responsible review",
+      "owner": "Service owner"
+    }
+  ]
+}

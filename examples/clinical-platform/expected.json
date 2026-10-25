@@ -1,0 +1,97 @@
+{
+  "synthetic": true,
+  "oracle": "Manually enumerated declarations and configured policy, not legal conclusions",
+  "before_flows": 8,
+  "after_flows": 10,
+  "added": [
+    "vendor-metrics",
+    "fraud-model",
+    "audit-archive",
+    "research-subprocessor"
+  ],
+  "removed": [
+    "biometric-door",
+    "vendor-feed"
+  ],
+  "unchanged": [
+    "identity",
+    "mail-notices"
+  ],
+  "changed": [
+    "billing.retention_days",
+    "care-notes.destination",
+    "care-notes.recipient",
+    "care-notes.data_categories",
+    "care-notes.purposes",
+    "care-notes.countries",
+    "care-notes.retention_days",
+    "care-notes.encrypted_in_transit",
+    "support-export.retention_days",
+    "support-export.lawful_basis"
+  ],
+  "policy_errors": [
+    [
+      "unapproved-country",
+      "care-notes"
+    ],
+    [
+      "unapproved-country",
+      "legacy-metrics"
+    ],
+    [
+      "unapproved-country",
+      "research-subprocessor"
+    ],
+    [
+      "retention-limit",
+      "care-notes"
+    ],
+    [
+      "retention-limit",
+      "legacy-metrics"
+    ],
+    [
+      "retention-limit",
+      "research-subprocessor"
+    ],
+    [
+      "encryption-required",
+      "care-notes"
+    ],
+    [
+      "encryption-required",
+      "legacy-metrics"
+    ],
+    [
+      "basis-required",
+      "support-export"
+    ]
+  ],
+  "policy_warnings": [
+    [
+      "sensitive-data",
+      "billing"
+    ],
+    [
+      "sensitive-data",
+      "care-notes"
+    ],
+    [
+      "sensitive-data",
+      "research-subprocessor"
+    ],
+    [
+      "unknown-retention",
+      "support-export"
+    ],
+    [
+      "unknown-retention",
+      "audit-archive"
+    ],
+    [
+      "ambiguous-category",
+      "fraud-model"
+    ]
+  ],
+  "expected_total_findings": 31
+}

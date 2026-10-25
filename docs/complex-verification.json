@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-25",
+  "engine_version": "0.1.1",
+  "synthetic": true,
+  "tests": {
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "50"
+  },
+  "complex_rehearsal": {
+    "synthetic": true,
+    "matter": "Privacy change review \u2014 Clinical services platform",
+    "findings": 31,
+    "review_status": "needs-information",
+    "pending": 4,
+    "original_package_digest": "4a74eea09fa849c00746be54c1acce306508123394e199bcdf107fea64e0f44c",
+    "external_actions": "none",
+    "legal_adequacy": "not established"
+  },
+  "browser": {
+    "synthetic": true,
+    "findings": 31,
+    "pending": 4,
+    "passed": [
+      "analysis report",
+      "desktop/mobile render",
+      "filter",
+      "incomplete review refused",
+      "decision download",
+      "finalize",
+      "verified final export",
+      "correction overlay",
+      "no page errors"
+    ]
+  },
+  "clean_wheel_install": "passed: complex matter in isolated environment; no sibling packages",
+  "oracle": "Authored expected.json is independent of engine results",
+  "hosted_ci": "See repository Actions for the current result"
+}

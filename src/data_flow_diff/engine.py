@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from typing import Literal
 
 from pydantic import Field, StrictBool, StrictInt, model_validator
@@ -11,16 +12,16 @@ from .audit import Strict, finding
 
 class Flow(Strict):
     id: str = Field(pattern=r"^[a-z][a-z0-9-]{0,62}$")
-    source: str = Field(min_length=1)
-    destination: str = Field(min_length=1)
+    source: str = Field(min_length=1, pattern=r"\S")
+    destination: str = Field(min_length=1, pattern=r"\S")
     data_categories: list[str] = Field(min_length=1)
     purposes: list[str] = Field(min_length=1)
-    recipient: str = Field(min_length=1)
+    recipient: str = Field(min_length=1, pattern=r"\S")
     countries: list[str] = Field(min_length=1)
     retention_days: StrictInt | None = Field(ge=0)
     encrypted_in_transit: StrictBool | None
     lawful_basis: str | None
-    owner: str = Field(min_length=1)
+    owner: str = Field(min_length=1, pattern=r"\S")
 
     @model_validator(mode="after")
     def unique_sets(self):
@@ -28,18 +29,15 @@ class Flow(Strict):
             values = getattr(self, key)
             if len(set(values)) != len(values) or any(not v.strip() for v in values):
                 raise ValueError(f"{key} must contain distinct nonblank values")
-        if any(
-            len(country) != 2 or not country.isascii() or not country.isupper()
-            for country in self.countries
-        ):
+        if any(not re.fullmatch(r"[A-Z]{2}", country) for country in self.countries):
             raise ValueError("countries must use uppercase two-letter codes")
         return self
 
 
 class Manifest(Strict):
     schema_version: Literal["1"] = "1"
-    system: str = Field(min_length=1)
-    revision: str = Field(min_length=1)
+    system: str = Field(min_length=1, pattern=r"\S")
+    revision: str = Field(min_length=1, pattern=r"\S")
     synthetic: StrictBool = False
     flows: list[Flow]
 
@@ -62,7 +60,7 @@ class Policy(Strict):
     @model_validator(mode="after")
     def policy_values(self):
         if len(set(self.allowed_countries)) != len(self.allowed_countries) or any(
-            len(c) != 2 or not c.isascii() or not c.isupper() for c in self.allowed_countries
+            not re.fullmatch(r"[A-Z]{2}", c) for c in self.allowed_countries
         ):
             raise ValueError("Policy countries must be distinct uppercase two-letter codes")
         if len(set(self.sensitive_categories)) != len(self.sensitive_categories) or any(
@@ -128,6 +126,18 @@ def compare(before: Manifest, after: Manifest, policy: Policy):
         if b is None:
             continue
         checks = [
+            (
+                "ambiguous-category",
+                "data_categories",
+                any(
+                    value not in policy.sensitive_categories
+                    and value.strip().casefold()
+                    in {c.strip().casefold() for c in policy.sensitive_categories}
+                    for value in b["data_categories"]
+                ),
+                "Category resembles a sensitive policy label but differs in case or whitespace",
+                "warning",
+            ),
             (
                 "unapproved-country",
                 "countries",
