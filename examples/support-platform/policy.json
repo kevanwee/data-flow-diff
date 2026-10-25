@@ -1,0 +1,13 @@
+{
+  "schema_version": "1",
+  "allowed_countries": [
+    "SG"
+  ],
+  "max_retention_days": 365,
+  "require_encryption": true,
+  "require_lawful_basis": true,
+  "sensitive_categories": [
+    "health",
+    "biometric"
+  ]
+}
