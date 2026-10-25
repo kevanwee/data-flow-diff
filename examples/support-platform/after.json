@@ -1,0 +1,31 @@
+{
+  "schema_version": "1",
+  "system": "Customer support platform",
+  "revision": "2",
+  "synthetic": true,
+  "flows": [
+    {
+      "id": "support-analytics",
+      "source": "support-database",
+      "destination": "vendor-analytics",
+      "data_categories": [
+        "contact",
+        "ticket-content",
+        "health"
+      ],
+      "purposes": [
+        "service-quality",
+        "model-improvement"
+      ],
+      "recipient": "external-service-provider",
+      "countries": [
+        "SG",
+        "US"
+      ],
+      "retention_days": 730,
+      "encrypted_in_transit": null,
+      "lawful_basis": "Recorded organisational assessment",
+      "owner": "Support operations"
+    }
+  ]
+}

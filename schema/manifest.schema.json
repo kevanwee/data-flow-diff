@@ -1,0 +1,145 @@
+{
+  "$defs": {
+    "Flow": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]{0,62}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "destination": {
+          "minLength": 1,
+          "title": "Destination",
+          "type": "string"
+        },
+        "data_categories": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Data Categories",
+          "type": "array"
+        },
+        "purposes": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Purposes",
+          "type": "array"
+        },
+        "recipient": {
+          "minLength": 1,
+          "title": "Recipient",
+          "type": "string"
+        },
+        "countries": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Countries",
+          "type": "array"
+        },
+        "retention_days": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Retention Days"
+        },
+        "encrypted_in_transit": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Encrypted In Transit"
+        },
+        "lawful_basis": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Lawful Basis"
+        },
+        "owner": {
+          "minLength": 1,
+          "title": "Owner",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "destination",
+        "data_categories",
+        "purposes",
+        "recipient",
+        "countries",
+        "retention_days",
+        "encrypted_in_transit",
+        "lawful_basis",
+        "owner"
+      ],
+      "title": "Flow",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1",
+      "default": "1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "system": {
+      "minLength": 1,
+      "title": "System",
+      "type": "string"
+    },
+    "revision": {
+      "minLength": 1,
+      "title": "Revision",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "flows": {
+      "items": {
+        "$ref": "#/$defs/Flow"
+      },
+      "title": "Flows",
+      "type": "array"
+    }
+  },
+  "required": [
+    "system",
+    "revision",
+    "flows"
+  ],
+  "title": "Manifest",
+  "type": "object"
+}

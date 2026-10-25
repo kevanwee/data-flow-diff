@@ -1,0 +1,43 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1",
+      "default": "1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "allowed_countries": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Allowed Countries",
+      "type": "array"
+    },
+    "max_retention_days": {
+      "default": 365,
+      "minimum": 0,
+      "title": "Max Retention Days",
+      "type": "integer"
+    },
+    "require_encryption": {
+      "default": true,
+      "title": "Require Encryption",
+      "type": "boolean"
+    },
+    "require_lawful_basis": {
+      "default": true,
+      "title": "Require Lawful Basis",
+      "type": "boolean"
+    },
+    "sensitive_categories": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Sensitive Categories",
+      "type": "array"
+    }
+  },
+  "title": "Policy",
+  "type": "object"
+}

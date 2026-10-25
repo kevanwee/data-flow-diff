@@ -1,0 +1,10 @@
+{
+  "package": "data_flow_diff",
+  "args": [
+    "compare",
+    "examples/support-platform/before.json",
+    "examples/support-platform/after.json",
+    "--policy",
+    "examples/support-platform/policy.json"
+  ]
+}
