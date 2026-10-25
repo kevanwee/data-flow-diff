@@ -1,0 +1,16 @@
+{
+  "package": "data_flow_diff",
+  "args": [
+    "compare",
+    "examples/clinical-platform/before.json",
+    "examples/clinical-platform/after.json",
+    "--policy",
+    "examples/clinical-platform/policy.json"
+  ],
+  "pending_rules": [
+    "ambiguous-category",
+    "unknown-retention",
+    "basis-required"
+  ],
+  "screenshot": "docs/images/complex-review.png"
+}

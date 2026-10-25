@@ -10,11 +10,13 @@
         },
         "source": {
           "minLength": 1,
+          "pattern": "\\S",
           "title": "Source",
           "type": "string"
         },
         "destination": {
           "minLength": 1,
+          "pattern": "\\S",
           "title": "Destination",
           "type": "string"
         },
@@ -36,6 +38,7 @@
         },
         "recipient": {
           "minLength": 1,
+          "pattern": "\\S",
           "title": "Recipient",
           "type": "string"
         },
@@ -83,6 +86,7 @@
         },
         "owner": {
           "minLength": 1,
+          "pattern": "\\S",
           "title": "Owner",
           "type": "string"
         }
@@ -114,11 +118,13 @@
     },
     "system": {
       "minLength": 1,
+      "pattern": "\\S",
       "title": "System",
       "type": "string"
     },
     "revision": {
       "minLength": 1,
+      "pattern": "\\S",
       "title": "Revision",
       "type": "string"
     },
